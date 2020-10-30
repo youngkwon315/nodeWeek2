@@ -1,7 +1,9 @@
-const sendNewData = (req, res) => {
-  const body = req.body;
+let { posts } = require("./db");
 
-  res.json({ sdf: "jhkhjk" });
+const sendNewData = (req, res) => {
+  const newItem = req.body;
+  posts.push(newItem);
+  res.send(posts);
 };
 
-module.exports = { sendNewData }; // routing.js 에서 사용하기 위해 모듈로 내보낸다.
+module.exports = { sendNewData };
