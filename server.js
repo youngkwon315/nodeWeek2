@@ -34,7 +34,16 @@ app.put("/products/:id", updatebyID);
 // post id 로 posts 배열중 하나의 post를 삭제하는 함수
 app.delete("/products/:id", deletebyID);
 
+const sleep = (ms) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+};
+
 const server = http.createServer(app);
-server.listen(3000, () => {
+server.listen(3000, async () => {
+  console.log("started");
+  console.log("after two seconds server starts");
+  await sleep(2000);
   console.log(`Example app listening at http://localhost:3000`);
 });
